@@ -1,0 +1,6 @@
+interface:
+  display_name: "Overcome False Limitations"
+  short_description: "Audit claimed blockers and recover working paths"
+  default_prompt: "Use $overcome-false-limitations to analyze the claimed blocker from prior context, read the real command/tool/browser output, test realistic alternate paths, and only declare a blocker after the evidence proves it."
+policy:
+  allow_implicit_invocation: true
