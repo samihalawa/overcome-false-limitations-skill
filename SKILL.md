@@ -17,6 +17,19 @@ A limitation is not real until the agent has read the primary output, identified
 
 Do not accept old agent conclusions like "blocked", "not possible", "requires auth", "URL is blocked", "tool unavailable", "browser cannot access it", or "command failed" as truth. Treat them as hypotheses to re-test.
 
+## Anti-Gate Rule
+
+Do not add or recommend code that blocks, disables, hides, removes, gates, or marks a feature/account/platform/tool as unavailable from a single failed attempt.
+
+Before any temporary gate is justified:
+
+- try at least 3 distinct approaches to make the intended path work;
+- collect evidence from at least 2 different source layers, not the same endpoint twice;
+- check the user's documented spec or durable position first;
+- if a temporary gate is still necessary, require a code comment like `// TEMP-GATE: YYYY-MM-DD - tried: ... - not tried: ... - removal condition: ...`.
+
+External API errors such as 403, 429, 500, empty results, selector misses, and timeouts are symptoms. Investigate alternate headers, sessions, user agents, browser profiles, existing state, rate windows, provider state, and prior successful paths before encoding a negative capability claim.
+
 ## Success Standard
 
 Finish with one of these:
@@ -133,4 +146,3 @@ Keep the closeout compact:
 `EVIDENCE:` command/tool/browser/provider proof.
 
 `LIMITS:` only real blockers that survived the recovery ladder.
-
